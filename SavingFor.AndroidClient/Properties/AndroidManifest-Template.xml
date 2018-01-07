@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" 
+  package="no.savingfor.goal" 
+  android:versionCode="17" 
+  android:versionName="1.8.2.0" 
+  android:installLocation="preferExternal">
+	<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="24" />
+	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+	<application android:label="@string/application_name">
+		<activity android:name="com.google.android.gms.ads.AdActivity" android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" android:theme="@android:style/Theme.Translucent" android:icon="@mipmap/ic_launcher" />
+	</application>
+</manifest>

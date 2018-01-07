@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+  <string name="amount">Beløp</string>
+  <string name="name">Navn</string>
+  <string name="choose_date_all_caps">DATO</string>
+  <string name="choose_image_all_caps">BILDE</string>
+  <string name="delete">Slett</string>
+  <string name="finished">Ferdige</string>
+  <string name="title_monthly_plan">Månedsplan</string>
+  <string name="application_name">Sparer til</string>
+  <string name="could_not_read_amount">Beløpet er ikke gyldig</string>
+  <string name="could_not_read_date">Dato er ikke gyldig</string>
+  <string name="name_is_required">Navngi målet</string>
+  <string name="sum_description">*Minimumsbeløp for å være i rute</string>
+  <string name="delete_confirmation">Slette valgte mål?</string>
+  <string name="delete_positive">Ja</string>
+  <string name="delete_negative">Avbryt</string>
+  <string name="saving_for">Sparer til</string>
+</resources>

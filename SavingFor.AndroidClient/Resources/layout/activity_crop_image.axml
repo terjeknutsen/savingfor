@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  android:id="@+id/view_crop_image_wrapper"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent">
+  <com.lyft.android.scissors.CropView
+    android:id="@+id/crop_view"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/default_appbar_height"
+    android:background="@color/accent"
+    android:layout_centerInParent="true"
+    app:cropviewViewportHeightRatio="1"/>
+</RelativeLayout>

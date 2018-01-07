@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="amount">Amount</string>
+  <string name="name">Name</string>
+  <string name="choose_date_all_caps">DATE</string>
+  <string name="choose_image_all_caps">IMAGE</string>
+  <string name="delete">Delete</string>
+  <string name="finished">Finished</string>
+  <string name="title_monthly_plan">Monthly plan</string>
+  <string name="application_name">Saving for</string>
+  <string name="could_not_read_amount">Could not read the amount</string>
+  <string name="could_not_read_date">Could not read the date</string>
+  <string name="name_is_required">Name your goal</string>
+  <string name="sum_description">*Minimum amount required to be on track</string>
+  <string name="transition_goal_image">com.savefor.transition_goal_image</string>
+  <string name="delete_confirmation">Delete selected goals?</string>
+  <string name="delete_positive">Ok</string>
+  <string name="delete_negative">Cancel</string>
+  <string name="saving_for">Saving for</string>
+  <string name="banner_main_view">ca-app-pub-9626399138628339/3937663605</string>
+  <string name="banner_monthly_plan_view">ca-app-pub-9626399138628339/8367863204</string>
+  <string name="banner_achieved_goals_view">ca-app-pub-9626399138628339/9844596404</string>
+
+  <!--For test only-->
+  <!--<string name="banner_main_view">ca-app-pub-3940256099942544/6300978111</string>
+  <string name="banner_monthly_plan_view">ca-app-pub-3940256099942544/6300978111</string>
+  <string name="banner_achieved_goals_view">ca-app-pub-3940256099942544/6300978111</string>-->
+
+
+</resources>
+
+
+

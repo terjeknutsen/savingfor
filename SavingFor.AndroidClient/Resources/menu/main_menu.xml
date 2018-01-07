@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
+  <item
+      android:id="@+id/item_statistics"
+      android:icon="@drawable/ic_list_white_48dp"
+      app:showAsAction="never"
+      android:background="@null"
+      android:title="@string/title_monthly_plan"
+      android:titleCondensed="@string/title_monthly_plan"/>
+  <item
+    android:id="@+id/item_finished"
+    android:icon="@drawable/ic_done_all_white_48dp"
+    app:showAsAction="never"
+    android:title="@string/finished"
+    android:background="@null"
+    android:titleCondensed="@string/finished"/>
+
+
+</menu>

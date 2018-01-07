@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+  <array name="supportedPackages">
+    <item>no.sparebank1.mobilbank</item>
+    <item>no.nordea.mobilebank</item>
+    <item>com.edb.mobile.android.mobilebankwrapper.gjensidige</item>
+    <item>com.edb.mobile.android.ibank.landkreditt</item>
+    <item>no.fokus.android.tribank</item>
+    <item>no.bnbank.mobilbank</item>
+    <item>no.santander.mobilbank</item>
+    <item>no.apps.dnbnor</item>
+    <item>no.seb.bank</item>
+    <item>no.skandiabanken</item>
+    <item>dk.sdc.mobilbank.storebrand</item>
+  </array>
+</resources>
