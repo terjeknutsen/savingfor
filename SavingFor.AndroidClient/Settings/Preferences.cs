@@ -1,6 +1,7 @@
 using Android.App;
 using Android.Content;
 using Android.Graphics;
+using System.Collections.Generic;
 
 namespace SavingFor.AndroidClient.Settings
 {
@@ -9,23 +10,38 @@ namespace SavingFor.AndroidClient.Settings
         private static readonly ISharedPreferences SharedPreferences;
         private const string IndexToken = "com.savingfor.main_image_index";
         private const string HeroColor = "com.savingfor.hero_color";
+        private const string Groups = "com.savingfor.groups";
 
         static Preferences()
         {
-           SharedPreferences = Application.Context.GetSharedPreferences("com.savingfor", FileCreationMode.Private);
+            SharedPreferences = Application.Context.GetSharedPreferences("com.savingfor", FileCreationMode.Private);
         }
 
         public static string HeroImageGoalId
         {
             get
             {
-                return SharedPreferences.GetString(IndexToken,"none");
+                return SharedPreferences.GetString(IndexToken, "none");
             }
             set
             {
                 var editor = SharedPreferences.Edit();
                 editor.PutString(IndexToken, value);
                 editor.Commit();
+            }
+        }
+
+        public static ICollection<string> UsedGroups 
+            {
+            get
+            {
+                return SharedPreferences.GetStringSet(Groups, new List<string>());
+            }
+             set
+            {
+                var edittor = SharedPreferences.Edit();
+                edittor.PutStringSet(Groups, value);
+                edittor.Commit();
             }
         }
 

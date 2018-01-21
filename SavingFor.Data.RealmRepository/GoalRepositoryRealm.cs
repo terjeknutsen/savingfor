@@ -85,6 +85,7 @@ namespace SavingFor.Data.RealmRepository
             instance.End = new DateTimeOffset(item.End);
             instance.Name = item.Name;
             instance.ProgressPerMinute = (double) item.ProgressPerMinute;
+            instance.Group = item.Group;
         }
 
         private static Goal MapFromRealm(Goal_r instance)
@@ -97,7 +98,8 @@ namespace SavingFor.Data.RealmRepository
                 Amount = (decimal)instance.Amount,
                 Start = instance.Start.DateTime,
                 End = instance.End.DateTime,
-                ProgressPerMinute = (decimal)instance.ProgressPerMinute
+                ProgressPerMinute = (decimal)instance.ProgressPerMinute,
+                Group = instance.Group
             };
         }
         private static Realm GetRealm()
@@ -115,5 +117,6 @@ namespace SavingFor.Data.RealmRepository
         public DateTimeOffset End { get; set; }
         public string Name { get; set; }
         public double ProgressPerMinute { get; set; }
+        public string Group { get; set; }
     }
 }

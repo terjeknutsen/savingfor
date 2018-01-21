@@ -34,11 +34,16 @@ using SavingFor.AndroidClient.Activities.Ads;
 using System.Collections.Generic;
 using SavingFor.AndroidClient.Activities.Helpers;
 using SavingFor.AndroidClient.Activities.Helpers.Animators;
+using SavingFor.AndroidClient.Services;
+using SavingFor.AndroidClient.Broadcasts;
+using Android.Support.V4.Content;
+using SavingFor.AndroidClient.Interfaces;
+using SavingFor.AndroidClient.Dialogs;
 
 namespace SavingFor.AndroidClient.Activities
 {
     [Activity(Theme = "@style/material_theme", ScreenOrientation = ScreenOrientation.Portrait)]
-    public class MainActivity : AppCompatActivity
+    public class MainActivity : AppCompatActivity, IHandleGoal,ILinkGoalGroup
     {
         private Toolbar toolbar;
         private FloatingActionButton fab;
@@ -160,7 +165,11 @@ namespace SavingFor.AndroidClient.Activities
         protected override void OnResume()
         {
             base.OnResume();
-            if(shouldStartUpdaterOnResume)
+            groupCreatedReceiver = new GroupCreatedReceiver(this);
+            groupLinkRemoved = new GroupLinkRemovedReceiver(this);
+            LocalBroadcastManager.GetInstance(this).RegisterReceiver(groupCreatedReceiver, new IntentFilter(nameof(GroupCreatedReceiver)));
+            LocalBroadcastManager.GetInstance(this).RegisterReceiver(groupLinkRemoved, new IntentFilter(nameof(GroupLinkRemovedReceiver)));
+            if (shouldStartUpdaterOnResume)
             totalUpdater.Start();
             if (adapter != null && adapter.ItemCount == 0)
             {
@@ -173,6 +182,8 @@ namespace SavingFor.AndroidClient.Activities
         protected override void OnPause()
         {
             base.OnPause();
+            LocalBroadcastManager.GetInstance(this).UnregisterReceiver(groupCreatedReceiver);
+            LocalBroadcastManager.GetInstance(this).UnregisterReceiver(groupLinkRemoved);
             totalUpdater.Stop();
         }
         [SecuritySafeCritical]
@@ -294,6 +305,8 @@ namespace SavingFor.AndroidClient.Activities
                 accountHelper.ShowAccount();
         }
         static List<string> availableBankApps = new List<string> { "no.sparebank1.mobilbank" };
+        private GroupCreatedReceiver groupCreatedReceiver;
+        private GroupLinkRemovedReceiver groupLinkRemoved;
 
         private async Task InitializeAsync()
         {
@@ -319,8 +332,6 @@ namespace SavingFor.AndroidClient.Activities
 
             rootLayout.Background = null;
         }
-
-      
 
         [SecuritySafeCritical]
         private IRepository<Goal> GetRepository()
@@ -348,9 +359,35 @@ namespace SavingFor.AndroidClient.Activities
 
         private void OnItemLongClick(object sender, int e)
         {
-            mActionMode = StartActionMode(new ActionBarCallback(this, OnDelete, OnCancel,OnShowMonthlyPlanForSelectedItems));
+            mActionMode = StartActionMode(
+                new ActionBarCallback(this, 
+                OnDelete, 
+                OnCancel,
+                OnShowMonthlyPlanForSelectedItems, 
+                OnLink,
+                OnUnlink));
+            //mActionMode.Menu.FindItem(Resource.Id.item_unlink).SetEnabled(false);
         }
 
+        private void OnUnlink()
+        {
+            var selectedItems = adapter.SelectedGoals;
+            var intent = new Intent(this, typeof(GoalUnlinkService));
+            var bundle = new Bundle();
+            bundle.PutStringArray(nameof(Goal.Id), selectedItems.Select(g => g.Id.ToString()).ToArray());
+            intent.PutExtra(nameof(Goal), bundle);
+
+            StartService(intent);
+        }
+        private void OnLink()
+        {
+            var allGroups = Preferences.UsedGroups.ToArray();
+            var bundle = new Bundle();
+            bundle.PutStringArray(nameof(Goal.Group), allGroups);
+            var linkDialog = LinkDialog.NewInstance(bundle);
+            linkDialog.Show(SupportFragmentManager,"link");
+       
+        }
         private void OnShowMonthlyPlanForSelectedItems()
         {
             shouldStartUpdaterOnResume = false;
@@ -443,6 +480,73 @@ namespace SavingFor.AndroidClient.Activities
         {
             emptyCollection.StartAnimation();
             rootLayout.SetBackgroundResource(Resource.Drawable.background);
+        }
+
+        public void HandleGoalGroupCreated(string groupName)
+        {
+            Preferences.HeroImageGoalId = Guid.Empty.ToString();
+
+
+            adapter.CancelEditMode();
+            adapter.Clear();
+            adapter.SetGoals(repository.All().Where(g => g.End > DateTime.Now && g.Group == groupName));
+            totalUpdater.Stop();
+
+            goalDetails.Refresh();
+            if (adapter.ItemCount == 0)
+            {
+                goalDetails.View.Visibility = ViewStates.Gone;
+                ShowEmptyCollectionView();
+                collapsingToolbar.Title = 0.0m.ToString("C");
+                totalUpdater.Reset();
+                return;
+            }
+            else
+            {
+                goalDetails.View.Visibility = ViewStates.Visible;
+                RunOnUiThread(async () => await goalDetails.SetDetails(new Guid(Preferences.HeroImageGoalId)));
+                RestartTotalUpdate();
+            }
+        }
+
+        public void HandleGroupLinkRemoved()
+        {
+            Preferences.HeroImageGoalId = Guid.Empty.ToString();
+
+            adapter.CancelEditMode();
+            adapter.Clear();
+            adapter.SetGoals(repository.All().Where(g => g.End > DateTime.Now));
+            totalUpdater.Stop();
+
+            goalDetails.Refresh();
+            if (adapter.ItemCount == 0)
+            {
+                goalDetails.View.Visibility = ViewStates.Gone;
+                ShowEmptyCollectionView();
+                collapsingToolbar.Title = 0.0m.ToString("C");
+                totalUpdater.Reset();
+                return;
+            }
+            else
+            {
+                goalDetails.View.Visibility = ViewStates.Visible;
+                RunOnUiThread(async () => await goalDetails.SetDetails(new Guid(Preferences.HeroImageGoalId)));
+                RestartTotalUpdate();
+            }
+
+        }
+
+        public void LinkGroup(string text)
+        {
+            var selectedItems = adapter.SelectedGoals;
+            var intent = new Intent(this, typeof(GoalLinkService));
+            var bundle = new Bundle();
+            bundle.PutStringArray(nameof(Goal.Id), selectedItems.Select(g => g.Id.ToString()).ToArray());
+            bundle.PutString(nameof(Goal.Group), text);
+            bundle.PutStringArray(nameof(Preferences), Preferences.UsedGroups.ToArray());
+            intent.PutExtra(nameof(Goal), bundle);
+
+            StartService(intent);
         }
     }
 

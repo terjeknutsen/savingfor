@@ -7,6 +7,8 @@
   <string name="delete">Delete</string>
   <string name="finished">Finished</string>
   <string name="title_monthly_plan">Monthly plan</string>
+  <string name="title_link">Link</string>
+  <string name="title_unlink">Unlink</string>
   <string name="application_name">Saving for</string>
   <string name="could_not_read_amount">Could not read the amount</string>
   <string name="could_not_read_date">Could not read the date</string>
@@ -17,14 +19,16 @@
   <string name="delete_positive">Ok</string>
   <string name="delete_negative">Cancel</string>
   <string name="saving_for">Saving for</string>
-  <string name="banner_main_view">ca-app-pub-9626399138628339/3937663605</string>
+  <string name="dialog_title_link">Select link</string>
+  <string name="dialog_ok_button">ok</string>
+  <!--<string name="banner_main_view">ca-app-pub-9626399138628339/3937663605</string>
   <string name="banner_monthly_plan_view">ca-app-pub-9626399138628339/8367863204</string>
-  <string name="banner_achieved_goals_view">ca-app-pub-9626399138628339/9844596404</string>
+  <string name="banner_achieved_goals_view">ca-app-pub-9626399138628339/9844596404</string>-->
 
   <!--For test only-->
-  <!--<string name="banner_main_view">ca-app-pub-3940256099942544/6300978111</string>
+  <string name="banner_main_view">ca-app-pub-3940256099942544/6300978111</string>
   <string name="banner_monthly_plan_view">ca-app-pub-3940256099942544/6300978111</string>
-  <string name="banner_achieved_goals_view">ca-app-pub-3940256099942544/6300978111</string>-->
+  <string name="banner_achieved_goals_view">ca-app-pub-3940256099942544/6300978111</string>
 
 
 </resources>

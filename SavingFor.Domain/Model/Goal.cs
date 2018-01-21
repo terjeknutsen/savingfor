@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Security;
 
 namespace SavingFor.Domain.Model
 {
     public sealed class Goal
         {
-            public Guid Id { get; set; }
+        public Guid Id { get; set; }
             public Guid AccountId { get; set; }
             public string Name { get; set; }
          
@@ -18,6 +17,9 @@ namespace SavingFor.Domain.Model
             public string ImageMedium => $"{Image}_medium";
 
             public string ImageSmall => $"{Image}_small";
-        }
+
+            public string Group { get; set; }
+
+    }
    
 }

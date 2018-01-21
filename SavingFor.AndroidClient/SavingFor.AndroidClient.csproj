@@ -40,7 +40,7 @@
     <AndroidSupportedAbis>armeabi-v7a;x86;x86_64;arm64-v8a</AndroidSupportedAbis>
     <AotAssemblies>false</AotAssemblies>
     <EnableLLVM>false</EnableLLVM>
-    <EnableProguard>false</EnableProguard>
+    <EnableProguard>true</EnableProguard>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -167,7 +167,10 @@
     <Compile Include="Activities\MyViewTreeObserver.cs" />
     <Compile Include="Activities\OffsetChangedListener.cs" />
     <Compile Include="Activities\SplashActivity.cs" />
+    <Compile Include="Broadcasts\GroupCreatedReceiver.cs" />
+    <Compile Include="Broadcasts\GroupLinkRemovedReceiver.cs" />
     <Compile Include="Constants\AppConstant.cs" />
+    <Compile Include="Dialogs\LinkDialog.cs" />
     <Compile Include="Factories\RepositoryFactory.cs" />
     <Compile Include="Activities\FinishedGoalsActivity.cs" />
     <Compile Include="Activities\GoalEditActivity.cs" />
@@ -187,8 +190,12 @@
     <Compile Include="Factories\GoalFactory.cs" />
     <Compile Include="Fragments\GoalDetailsFragment.cs" />
     <Compile Include="Fragments\LineAnimationFragment.cs" />
+    <Compile Include="Interfaces\IHandleGoal.cs" />
+    <Compile Include="Interfaces\ILinkGoalGroup.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\GoalLinkService.cs" />
+    <Compile Include="Services\GoalUnlinkService.cs" />
     <Compile Include="Services\SaveGoalService.cs" />
     <Compile Include="Settings\IntentExtra.cs" />
     <Compile Include="Settings\Preferences.cs" />
@@ -225,6 +232,9 @@
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
+    <AndroidResource Include="Resources\layout\dialog_select_link.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
     <ProguardConfiguration Include="proguard.cfg" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
@@ -457,7 +467,10 @@
   <ItemGroup>
     <Content Include="Properties\manifest-copy.xslt" />
     <Content Include="Properties\manifest-transform.xslt" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_link.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_link.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="..\..\lib\Xamarin.Android.Support.Vector.Drawable.23.4.0.1\build\Xamarin.Android.Support.Vector.Drawable.targets" Condition="Exists('..\..\lib\Xamarin.Android.Support.Vector.Drawable.23.4.0.1\build\Xamarin.Android.Support.Vector.Drawable.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

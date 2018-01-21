@@ -7,6 +7,17 @@
     android:title="@string/title_monthly_plan"
     android:titleCondensed="@string/title_monthly_plan"></item>
   <item
+    android:id="@+id/item_link"
+    android:icon="@drawable/ic_link"
+    android:showAsAction="ifRoom|withText"
+    android:title="@string/title_link"
+    android:titleCondensed="@string/title_link"/>
+  <item
+    android:id="@+id/item_unlink"
+    android:showAsAction="ifRoom|withText"
+    android:title="@string/title_unlink"
+    android:titleCondensed="@string/title_unlink"/>
+  <item
       android:id="@+id/item_delete"
       android:icon="@drawable/ic_delete_sweep_white_48dp"
       android:showAsAction="ifRoom|withText"

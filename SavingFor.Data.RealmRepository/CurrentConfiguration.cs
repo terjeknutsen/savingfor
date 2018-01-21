@@ -1,4 +1,5 @@
 ﻿using Realms;
+using System.Linq;
 using System.Threading;
 
 namespace SavingFor.Data.RealmRepository
@@ -6,7 +7,7 @@ namespace SavingFor.Data.RealmRepository
     public sealed class CurrentConfiguration
     {
         private static CurrentConfiguration instance;
-        private const ulong CurrentSchemaVersion = 1;
+        private const ulong CurrentSchemaVersion = 2;
 
         public static CurrentConfiguration Instance()
         {
@@ -24,6 +25,18 @@ namespace SavingFor.Data.RealmRepository
                 SchemaVersion = CurrentSchemaVersion,
                 MigrationCallback = (migration,oldSchemaVersion) =>
                 {
+                    var newGoals = migration.NewRealm.All<Goal_r>();
+                    var oldGoals = migration.OldRealm.All("Goal_r");
+                    for(var i = 0; i < newGoals.Count(); i++)
+                    {
+                        var oldGoal = oldGoals.ElementAt(i);
+                        var newGoal = newGoals.ElementAt(i);
+
+                        if(oldSchemaVersion < 2)
+                        {
+                            newGoal.Group = string.Empty;
+                        }
+                    }
                     // Examplecode
                     //var newPeople = migration.NewRealm.All<Person>();
                     //var oldPeople = migration.OldRealm.All("Person");

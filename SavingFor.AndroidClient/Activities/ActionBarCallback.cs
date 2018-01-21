@@ -10,13 +10,22 @@ namespace SavingFor.AndroidClient.Activities
         private readonly Action onDelete;
         private readonly Action onCancel;
         private readonly Action onShowMonthlyPlan;
+        private readonly Action onLinkSelected;
+        private readonly Action onUnlink;
 
-        public ActionBarCallback(Activity activity, Action onDelete, Action onCancel, Action onShowMonthlyPlan)
+        public ActionBarCallback(Activity activity, 
+            Action onDelete, 
+            Action onCancel, 
+            Action onShowMonthlyPlan,
+            Action onLink,
+            Action onUnlink)
         {
             this.activity = activity;
             this.onDelete = onDelete;
             this.onCancel = onCancel;
             this.onShowMonthlyPlan = onShowMonthlyPlan;
+            this.onLinkSelected = onLink;
+            this.onUnlink = onUnlink;
         }
 
         public bool OnActionItemClicked(ActionMode mode, IMenuItem item)
@@ -28,6 +37,14 @@ namespace SavingFor.AndroidClient.Activities
             if (item.ItemId == Resource.Id.item_selected_monthly_plan)
             {
                 onShowMonthlyPlan();
+            }
+            if (item.ItemId == Resource.Id.item_link)
+            {
+                onLinkSelected();
+            }
+            if (item.ItemId == Resource.Id.item_unlink)
+            {
+                onUnlink();
             }
 
             return false;

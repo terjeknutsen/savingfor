@@ -7,6 +7,8 @@
   <string name="delete">Slett</string>
   <string name="finished">Ferdige</string>
   <string name="title_monthly_plan">Månedsplan</string>
+  <string name="title_link">Koble sammen</string>
+  <string name="title_unlink">Frakoble</string>
   <string name="application_name">Sparer til</string>
   <string name="could_not_read_amount">Beløpet er ikke gyldig</string>
   <string name="could_not_read_date">Dato er ikke gyldig</string>
@@ -16,4 +18,5 @@
   <string name="delete_positive">Ja</string>
   <string name="delete_negative">Avbryt</string>
   <string name="saving_for">Sparer til</string>
+  <string name="dialog_title_link">Velg gruppe</string>
 </resources>
