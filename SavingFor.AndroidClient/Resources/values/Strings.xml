@@ -21,6 +21,9 @@
   <string name="saving_for">Saving for</string>
   <string name="dialog_title_link">Select link</string>
   <string name="dialog_ok_button">ok</string>
+  <string name="none_selected">Ingen gruppe</string>
+  <string name="title_add_group">Legg til gruppe</string>
+  <string name="title_add">Legg til</string>
   <!--<string name="banner_main_view">ca-app-pub-9626399138628339/3937663605</string>
   <string name="banner_monthly_plan_view">ca-app-pub-9626399138628339/8367863204</string>
   <string name="banner_achieved_goals_view">ca-app-pub-9626399138628339/9844596404</string>-->

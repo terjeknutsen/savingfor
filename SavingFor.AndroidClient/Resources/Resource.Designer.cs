@@ -44,9 +44,6 @@ namespace SavingFor.AndroidClient
 			global::SavingFor.AndroidLib.Resource.Dimension.cardview_compat_inset_shadow = global::SavingFor.AndroidClient.Resource.Dimension.cardview_compat_inset_shadow;
 			global::SavingFor.AndroidLib.Resource.Dimension.cardview_default_elevation = global::SavingFor.AndroidClient.Resource.Dimension.cardview_default_elevation;
 			global::SavingFor.AndroidLib.Resource.Dimension.cardview_default_radius = global::SavingFor.AndroidClient.Resource.Dimension.cardview_default_radius;
-			global::SavingFor.AndroidLib.Resource.String.ApplicationName = global::SavingFor.AndroidClient.Resource.String.ApplicationName;
-			global::SavingFor.AndroidLib.Resource.String.Hello = global::SavingFor.AndroidClient.Resource.String.Hello;
-			global::SavingFor.AndroidLib.Resource.String.hero_image = global::SavingFor.AndroidClient.Resource.String.hero_image;
 			global::SavingFor.AndroidLib.Resource.Style.Base_CardView = global::SavingFor.AndroidClient.Resource.Style.Base_CardView;
 			global::SavingFor.AndroidLib.Resource.Style.CardView = global::SavingFor.AndroidClient.Resource.Style.CardView;
 			global::SavingFor.AndroidLib.Resource.Style.CardView_Dark = global::SavingFor.AndroidClient.Resource.Style.CardView_Dark;
@@ -2354,6 +2351,9 @@ namespace SavingFor.AndroidClient
 			// aapt resource value: 0x7f0a0087
 			public const int fragment_next_goal = 2131361927;
 			
+			// aapt resource value: 0x7f0a00c2
+			public const int group_spinner = 2131361986;
+			
 			// aapt resource value: 0x7f0a0005
 			public const int home = 2131361797;
 			
@@ -2390,26 +2390,29 @@ namespace SavingFor.AndroidClient
 			// aapt resource value: 0x7f0a00c0
 			public const int info = 2131361984;
 			
-			// aapt resource value: 0x7f0a00c2
-			public const int item_delete = 2131361986;
-			
-			// aapt resource value: 0x7f0a00c7
-			public const int item_finished = 2131361991;
+			// aapt resource value: 0x7f0a00c3
+			public const int item_add_group = 2131361987;
 			
 			// aapt resource value: 0x7f0a00c4
-			public const int item_link = 2131361988;
+			public const int item_delete = 2131361988;
 			
-			// aapt resource value: 0x7f0a00c3
-			public const int item_selected_monthly_plan = 2131361987;
+			// aapt resource value: 0x7f0a00c9
+			public const int item_finished = 2131361993;
 			
 			// aapt resource value: 0x7f0a00c6
-			public const int item_statistics = 2131361990;
+			public const int item_link = 2131361990;
+			
+			// aapt resource value: 0x7f0a00c5
+			public const int item_selected_monthly_plan = 2131361989;
+			
+			// aapt resource value: 0x7f0a00c8
+			public const int item_statistics = 2131361992;
 			
 			// aapt resource value: 0x7f0a0000
 			public const int item_touch_helper_previous_elevation = 2131361792;
 			
-			// aapt resource value: 0x7f0a00c5
-			public const int item_unlink = 2131361989;
+			// aapt resource value: 0x7f0a00c7
+			public const int item_unlink = 2131361991;
 			
 			// aapt resource value: 0x7f0a0080
 			public const int layout_finished_goal_empty = 2131361920;
@@ -2942,7 +2945,10 @@ namespace SavingFor.AndroidClient
 			public const int select_dialog_singlechoice_material = 2130968636;
 			
 			// aapt resource value: 0x7f04003d
-			public const int support_simple_spinner_dropdown_item = 2130968637;
+			public const int spinner_group = 2130968637;
+			
+			// aapt resource value: 0x7f04003e
+			public const int support_simple_spinner_dropdown_item = 2130968638;
 			
 			static Layout()
 			{
@@ -2958,13 +2964,16 @@ namespace SavingFor.AndroidClient
 		{
 			
 			// aapt resource value: 0x7f0e0000
-			public const int cab_delete_menu = 2131623936;
+			public const int cab_default_menu = 2131623936;
 			
 			// aapt resource value: 0x7f0e0001
-			public const int cab_menu = 2131623937;
+			public const int cab_delete_menu = 2131623937;
 			
 			// aapt resource value: 0x7f0e0002
-			public const int main_menu = 2131623938;
+			public const int cab_menu = 2131623938;
+			
+			// aapt resource value: 0x7f0e0003
+			public const int main_menu = 2131623939;
 			
 			static Menu()
 			{
@@ -2994,12 +3003,6 @@ namespace SavingFor.AndroidClient
 		
 		public partial class String
 		{
-			
-			// aapt resource value: 0x7f060021
-			public const int ApplicationName = 2131099681;
-			
-			// aapt resource value: 0x7f060020
-			public const int Hello = 2131099680;
 			
 			// aapt resource value: 0x7f060009
 			public const int abc_action_bar_home_description = 2131099657;
@@ -3061,14 +3064,14 @@ namespace SavingFor.AndroidClient
 			// aapt resource value: 0x7f060005
 			public const int accept = 2131099653;
 			
-			// aapt resource value: 0x7f060023
-			public const int amount = 2131099683;
+			// aapt resource value: 0x7f060020
+			public const int amount = 2131099680;
 			
 			// aapt resource value: 0x7f06001d
 			public const int appbar_scrolling_view_behavior = 2131099677;
 			
-			// aapt resource value: 0x7f06002c
-			public const int application_name = 2131099692;
+			// aapt resource value: 0x7f060029
+			public const int application_name = 2131099689;
 			
 			// aapt resource value: 0x7f060001
 			public const int auth_google_play_services_client_facebook_display_name = 2131099649;
@@ -3091,20 +3094,20 @@ namespace SavingFor.AndroidClient
 			// aapt resource value: 0x7f06001f
 			public const int character_counter_pattern = 2131099679;
 			
-			// aapt resource value: 0x7f060025
-			public const int choose_date_all_caps = 2131099685;
+			// aapt resource value: 0x7f060022
+			public const int choose_date_all_caps = 2131099682;
 			
-			// aapt resource value: 0x7f060026
-			public const int choose_image_all_caps = 2131099686;
+			// aapt resource value: 0x7f060023
+			public const int choose_image_all_caps = 2131099683;
 			
 			// aapt resource value: 0x7f060002
 			public const int common_google_play_services_unknown_issue = 2131099650;
 			
-			// aapt resource value: 0x7f06002d
-			public const int could_not_read_amount = 2131099693;
+			// aapt resource value: 0x7f06002a
+			public const int could_not_read_amount = 2131099690;
 			
-			// aapt resource value: 0x7f06002e
-			public const int could_not_read_date = 2131099694;
+			// aapt resource value: 0x7f06002b
+			public const int could_not_read_date = 2131099691;
 			
 			// aapt resource value: 0x7f060008
 			public const int create_calendar_message = 2131099656;
@@ -3115,38 +3118,38 @@ namespace SavingFor.AndroidClient
 			// aapt resource value: 0x7f060006
 			public const int decline = 2131099654;
 			
-			// aapt resource value: 0x7f060027
-			public const int delete = 2131099687;
-			
-			// aapt resource value: 0x7f060032
-			public const int delete_confirmation = 2131099698;
-			
-			// aapt resource value: 0x7f060034
-			public const int delete_negative = 2131099700;
-			
-			// aapt resource value: 0x7f060033
-			public const int delete_positive = 2131099699;
-			
-			// aapt resource value: 0x7f060037
-			public const int dialog_ok_button = 2131099703;
-			
-			// aapt resource value: 0x7f060036
-			public const int dialog_title_link = 2131099702;
-			
-			// aapt resource value: 0x7f060028
-			public const int finished = 2131099688;
-			
-			// aapt resource value: 0x7f060022
-			public const int hero_image = 2131099682;
-			
 			// aapt resource value: 0x7f060024
-			public const int name = 2131099684;
+			public const int delete = 2131099684;
 			
 			// aapt resource value: 0x7f06002f
-			public const int name_is_required = 2131099695;
+			public const int delete_confirmation = 2131099695;
+			
+			// aapt resource value: 0x7f060031
+			public const int delete_negative = 2131099697;
+			
+			// aapt resource value: 0x7f060030
+			public const int delete_positive = 2131099696;
+			
+			// aapt resource value: 0x7f060034
+			public const int dialog_ok_button = 2131099700;
+			
+			// aapt resource value: 0x7f060033
+			public const int dialog_title_link = 2131099699;
+			
+			// aapt resource value: 0x7f060025
+			public const int finished = 2131099685;
+			
+			// aapt resource value: 0x7f060021
+			public const int name = 2131099681;
+			
+			// aapt resource value: 0x7f06002c
+			public const int name_is_required = 2131099692;
 			
 			// aapt resource value: 0x7f060035
-			public const int saving_for = 2131099701;
+			public const int none_selected = 2131099701;
+			
+			// aapt resource value: 0x7f060032
+			public const int saving_for = 2131099698;
 			
 			// aapt resource value: 0x7f06001c
 			public const int status_bar_notification_info_overflow = 2131099676;
@@ -3157,20 +3160,26 @@ namespace SavingFor.AndroidClient
 			// aapt resource value: 0x7f060003
 			public const int store_picture_title = 2131099651;
 			
-			// aapt resource value: 0x7f060030
-			public const int sum_description = 2131099696;
+			// aapt resource value: 0x7f06002d
+			public const int sum_description = 2131099693;
 			
-			// aapt resource value: 0x7f06002a
-			public const int title_link = 2131099690;
+			// aapt resource value: 0x7f060037
+			public const int title_add = 2131099703;
 			
-			// aapt resource value: 0x7f060029
-			public const int title_monthly_plan = 2131099689;
+			// aapt resource value: 0x7f060036
+			public const int title_add_group = 2131099702;
 			
-			// aapt resource value: 0x7f06002b
-			public const int title_unlink = 2131099691;
+			// aapt resource value: 0x7f060027
+			public const int title_link = 2131099687;
 			
-			// aapt resource value: 0x7f060031
-			public const int transition_goal_image = 2131099697;
+			// aapt resource value: 0x7f060026
+			public const int title_monthly_plan = 2131099686;
+			
+			// aapt resource value: 0x7f060028
+			public const int title_unlink = 2131099688;
+			
+			// aapt resource value: 0x7f06002e
+			public const int transition_goal_image = 2131099694;
 			
 			static String()
 			{

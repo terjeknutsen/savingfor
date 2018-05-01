@@ -11,6 +11,7 @@ namespace SavingFor.AndroidClient.Settings
         private const string IndexToken = "com.savingfor.main_image_index";
         private const string HeroColor = "com.savingfor.hero_color";
         private const string Groups = "com.savingfor.groups";
+        private const string SelectedGroup = "com.savingfor.current_group";
 
         static Preferences()
         {
@@ -42,6 +43,20 @@ namespace SavingFor.AndroidClient.Settings
                 var edittor = SharedPreferences.Edit();
                 edittor.PutStringSet(Groups, value);
                 edittor.Commit();
+            }
+        }
+
+        public static string CurrentGroup
+        {
+            get
+            {
+                return SharedPreferences.GetString(SelectedGroup, string.Empty);
+            }
+            set
+            {
+                var editor = SharedPreferences.Edit();
+                editor.PutString(SelectedGroup, value);
+                editor.Commit();
             }
         }
 

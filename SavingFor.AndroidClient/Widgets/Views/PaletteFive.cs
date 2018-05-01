@@ -1,5 +1,6 @@
 ﻿using Android.Content;
 using Android.Graphics;
+using Android.Support.V4.Content;
 
 namespace SavingFor.AndroidClient.Widgets.Views
 {
@@ -9,7 +10,7 @@ namespace SavingFor.AndroidClient.Widgets.Views
         {
             SetZ(1);
         }
-        protected override Color Color => Resources.GetColor(Resource.Color.palette_5, default(Android.Content.Res.Resources.Theme));
+        protected override Color Color => new Color(ContextCompat.GetColor(Context, Resource.Color.palette_5));
 
         protected override int GetLeft()
         {

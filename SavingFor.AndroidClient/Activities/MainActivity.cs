@@ -39,11 +39,16 @@ using SavingFor.AndroidClient.Broadcasts;
 using Android.Support.V4.Content;
 using SavingFor.AndroidClient.Interfaces;
 using SavingFor.AndroidClient.Dialogs;
+using Android.Widget;
 
 namespace SavingFor.AndroidClient.Activities
 {
     [Activity(Theme = "@style/material_theme", ScreenOrientation = ScreenOrientation.Portrait)]
-    public class MainActivity : AppCompatActivity, IHandleGoal,ILinkGoalGroup
+    public class MainActivity : AppCompatActivity, 
+        IHandleGoal,
+        ILinkGoalGroup,
+        IDeleteGoal,
+        IAddGroup
     {
         private Toolbar toolbar;
         private FloatingActionButton fab;
@@ -116,7 +121,7 @@ namespace SavingFor.AndroidClient.Activities
         {
 
             if (appbarLayout.TotalScrollRange + verticalOffset == 0)
-                toolbar.SetBackgroundColor(Resources.GetColor(Resource.Color.primary, default(Android.Content.Res.Resources.Theme)));
+                toolbar.SetBackgroundColor(new Color(ContextCompat.GetColor(this,Resource.Color.primary)));
             else toolbar.SetBackgroundColor(Color.Transparent);
             if (isCollapsed)
             {
@@ -312,9 +317,17 @@ namespace SavingFor.AndroidClient.Activities
         {
             var allGoals = await GetRepository().AllAsync();
             adapter.Clear();
+            var currentGroup = Preferences.CurrentGroup;
             RunOnUiThread(() =>
             {
-                adapter.SetGoals(allGoals.Where(g => g.End > DateTime.Now));
+                var displayGoals = allGoals.Where(g => g.End > DateTime.Now);
+                if (!string.IsNullOrEmpty(currentGroup))
+                {
+                    displayGoals = displayGoals.Where(g => g.Group == currentGroup);
+                }
+               
+                adapter.SetGoals(displayGoals);
+
             });
 
             if (adapter.ItemCount > 0)
@@ -359,14 +372,14 @@ namespace SavingFor.AndroidClient.Activities
 
         private void OnItemLongClick(object sender, int e)
         {
-            mActionMode = StartActionMode(
-                new ActionBarCallback(this, 
-                OnDelete, 
-                OnCancel,
-                OnShowMonthlyPlanForSelectedItems, 
-                OnLink,
-                OnUnlink));
-            //mActionMode.Menu.FindItem(Resource.Id.item_unlink).SetEnabled(false);
+            mActionMode = StartActionMode(new DefaultActionBarCallback(this,toolbar,this,this,this));
+            //mActionMode = StartActionMode(
+            //    new ActionBarCallback(this, 
+            //    OnDelete, 
+            //    OnCancel,
+            //    OnShowMonthlyPlanForSelectedItems, 
+            //    OnLink,
+            //    OnUnlink));
         }
 
         private void OnUnlink()
@@ -482,10 +495,9 @@ namespace SavingFor.AndroidClient.Activities
             rootLayout.SetBackgroundResource(Resource.Drawable.background);
         }
 
-        public void HandleGoalGroupCreated(string groupName)
+        public void GoalGroupSelected(string groupName)
         {
             Preferences.HeroImageGoalId = Guid.Empty.ToString();
-
 
             adapter.CancelEditMode();
             adapter.Clear();
@@ -547,6 +559,25 @@ namespace SavingFor.AndroidClient.Activities
             intent.PutExtra(nameof(Goal), bundle);
 
             StartService(intent);
+        }
+
+         public void DeleteGoal()
+        {
+            var dialog = new AlertDialog.Builder(this)
+             .SetIcon(Android.Resource.Drawable.IcDialogAlert)
+             .SetTitle(Resource.String.delete_confirmation)
+             .SetPositiveButton(Resource.String.delete_positive, delegate { Delete(); })
+             .SetNegativeButton(Resource.String.delete_negative, delegate { });
+            dialog.Show();
+        }
+
+        public void AddGroup()
+        {
+            var allGroups = Preferences.UsedGroups.ToArray();
+            var bundle = new Bundle();
+            bundle.PutStringArray(nameof(Goal.Group), allGroups);
+            var linkDialog = LinkDialog.NewInstance(bundle);
+            linkDialog.Show(SupportFragmentManager, "link");
         }
     }
 

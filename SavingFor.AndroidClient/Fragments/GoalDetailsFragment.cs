@@ -20,6 +20,7 @@ using SavingFor.Domain.Model;
 using SavingFor.LPI;
 using Fragment = Android.Support.V4.App.Fragment;
 using SavingFor.AndroidLib.Palettes;
+using Android.Support.V4.Content;
 
 namespace SavingFor.AndroidClient.Fragments
 {
@@ -59,11 +60,11 @@ namespace SavingFor.AndroidClient.Fragments
                     await SetImageAsync(images[availableIds[new Random().Next(0, images.Count)]].Image);
                 else
                 {
-                    var primary = Resources.GetColor(Resource.Color.primary, default(Resources.Theme));
-                    var statusBarScrim = Resources.GetColor(Resource.Color.primary_dark, default(Resources.Theme));
-                    var contentScrim = Resources.GetColor(Resource.Color.primary, default(Resources.Theme));
-                    var background = Resources.GetColor(Resource.Color.window_background, default(Resources.Theme));
-                    Preferences.CurrentColor = Resources.GetColor(Resource.Color.primary, default(Resources.Theme));
+                    var primary = ContextCompat.GetColor(Activity, Resource.Color.primary);
+                    var statusBarScrim = new Color(ContextCompat.GetColor(Activity,Resource.Color.primary_dark));
+                    var contentScrim = new Color(ContextCompat.GetColor(Activity, Resource.Color.primary));
+                    var background = new Color(ContextCompat.GetColor(Activity,Resource.Color.window_background));
+                    Preferences.CurrentColor = new Color(ContextCompat.GetColor(Activity, Resource.Color.primary));
                     Preferences.HeroImageGoalId = Guid.Empty.ToString();
                     CollapsingToolbar.ContentScrim = new ColorDrawable(contentScrim);
                     CollapsingToolbar.Background = new ColorDrawable(background);

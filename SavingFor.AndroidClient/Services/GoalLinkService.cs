@@ -45,7 +45,7 @@ namespace SavingFor.AndroidClient.Services
                 goal.Group = groupName;
                 repository.Update(goal);
             }
-
+            Preferences.CurrentGroup = groupName;
             var receiverIntent = new Intent(nameof(GroupCreatedReceiver));
             var receiverBundle = new Bundle();
             receiverBundle.PutString(nameof(Domain.Model.Goal.Group), groupName);

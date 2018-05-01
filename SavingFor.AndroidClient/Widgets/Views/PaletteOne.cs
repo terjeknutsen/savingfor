@@ -1,6 +1,7 @@
 ﻿using System;
 using Android.Content;
 using Android.Graphics;
+using Android.Support.V4.Content;
 using Android.Views;
 
 namespace SavingFor.AndroidClient.Widgets.Views
@@ -18,7 +19,7 @@ namespace SavingFor.AndroidClient.Widgets.Views
         private float radius = 1.0f;
         private float density;
         public bool IsFinished => radius > 500;
-        private Color Color => Resources.GetColor(Resource.Color.palette_1, default(Android.Content.Res.Resources.Theme));
+        private Color Color => new Color(ContextCompat.GetColor(Context, Resource.Color.palette_1));
         protected override void OnDraw(Canvas canvas)
         {
             centerX += 10;

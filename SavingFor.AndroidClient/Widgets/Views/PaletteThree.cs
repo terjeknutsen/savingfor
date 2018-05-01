@@ -1,6 +1,7 @@
 ﻿using System;
 using Android.Content;
 using Android.Graphics;
+using Android.Support.V4.Content;
 
 namespace SavingFor.AndroidClient.Widgets.Views
 {
@@ -31,6 +32,6 @@ namespace SavingFor.AndroidClient.Widgets.Views
             return 0;
         }
 
-        protected override Color Color => Resources.GetColor(Resource.Color.palette_3, default(Android.Content.Res.Resources.Theme));
+        protected override Color Color => new Color(ContextCompat.GetColor(Context, Resource.Color.palette_3));
     }
 }

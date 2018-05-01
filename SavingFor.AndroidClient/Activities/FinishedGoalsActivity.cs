@@ -23,6 +23,7 @@ using SavingFor.Domain.Model;
 using SavingFor.LPI;
 using ActionMode = Android.Support.V7.View.ActionMode;
 using Android.Support.V4.App;
+using Android.Support.V4.Content;
 
 namespace SavingFor.AndroidClient.Activities
 {
@@ -96,7 +97,7 @@ namespace SavingFor.AndroidClient.Activities
                 SetSupportActionBar(toolbar);
                 SupportActionBar.SetDisplayHomeAsUpEnabled(true);
                 SupportActionBar.SetTitle(Resource.String.finished);
-                var color = Resources.GetColor(Resource.Color.primary, default(Android.Content.Res.Resources.Theme));
+                var color = new Color(ContextCompat.GetColor(this,Resource.Color.primary)); 
                 SupportActionBar.SetBackgroundDrawable(new ColorDrawable(color));
             }
         }

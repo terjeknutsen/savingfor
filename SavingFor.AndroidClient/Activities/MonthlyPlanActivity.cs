@@ -24,6 +24,7 @@ using SavingFor.LPI;
 using SavingFor.Domain.Model;
 using SavingFor.Domain.Service;
 using Android.Graphics;
+using Android.Support.V4.Content;
 
 namespace SavingFor.AndroidClient.Activities
 {
@@ -63,7 +64,7 @@ namespace SavingFor.AndroidClient.Activities
         private void TrySetStatusbarColor()
         {
             if (Build.VERSION.SdkInt >= BuildVersionCodes.Lollipop)
-                Window.SetStatusBarColor(Resources.GetColor(Resource.Color.primary_dark,default(Android.Content.Res.Resources.Theme)));
+                Window.SetStatusBarColor(new Color(ContextCompat.GetColor(this,Resource.Color.primary_dark)));
         }
 
         private async Task LoadAdsAsync()
@@ -110,7 +111,7 @@ namespace SavingFor.AndroidClient.Activities
             SetSupportActionBar(toolbar);
             SupportActionBar.SetDisplayHomeAsUpEnabled(true);
             SupportActionBar.SetTitle(Resource.String.title_monthly_plan);
-            var color = Resources.GetColor(Resource.Color.primary, default(Android.Content.Res.Resources.Theme));
+            var color = new Color(ContextCompat.GetColor(this,Resource.Color.primary));
             SupportActionBar.SetBackgroundDrawable(new ColorDrawable(color));
         }
 

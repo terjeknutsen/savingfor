@@ -15,7 +15,7 @@ namespace SavingFor.AndroidClient.Broadcasts
         public override void OnReceive(Context context, Intent intent)
         {
             var bundle = intent.GetBundleExtra(nameof(Goal));
-            handler.HandleGoalGroupCreated(bundle.GetString(nameof(Goal.Group)));
+            handler.GoalGroupSelected(bundle.GetString(nameof(Goal.Group)));
         }
     }
 }

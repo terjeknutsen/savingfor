@@ -2,7 +2,7 @@
 {
     public interface IHandleGoal
     {
-        void HandleGoalGroupCreated(string groupName);
+        void GoalGroupSelected(string groupName);
         void HandleGroupLinkRemoved();
     }
 }
